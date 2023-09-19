@@ -3,45 +3,50 @@ import { useEffect, useState } from "react";
 import { Container, ContainerTests } from "./style";
 import { getCurrentTest } from "@/shared/ui/BurgerButton/api/testsData/fakeApi/fakeAPI";
 import { type } from "os";
-import { QuestionType, TestType } from "@/shared/ui/BurgerButton/api/testsData/fakeApi/testsData";
+import {
+  QuestionType,
+  TestType,
+} from "@/shared/ui/BurgerButton/api/testsData/fakeApi/testsData";
 import Questions from "@/widgets/Questions";
 import { useActions } from "@/redux/hooks/useActions";
 import { useAppSelector } from "@/redux/hooks/hooks";
 import { useRouter } from "next/navigation";
-interface Props{
-    params: {
-      testId:string
-    }
+interface Props {
+  params: {
+    testId: string;
+  };
 }
 
-export default function Test({params: {testId}}:Props) {
-  const router = useRouter()
-  const [currentTest, setCurrentTest] = useState<TestType | any >(getCurrentTest(testId))
-  const [questionTestId, setQuestionTestId] = useState<number>(0)
+export default function Test({ params: { testId } }: Props) {
+  const router = useRouter();
+  const [currentTest, setCurrentTest] = useState<TestType | any>(
+    getCurrentTest(testId)
+  );
+  const [questionTestId, setQuestionTestId] = useState<number>(0);
   const [currentQuestion, setCurrentQuestion] = useState<QuestionType>(
     currentTest.questions[questionTestId]
   );
-  const {addTestResult} = useActions()
+  const { addTestResult } = useActions();
 
-  useEffect(()=>{
-    if(questionTestId>currentTest.questions.length-1){
-      debugger
+  useEffect(() => {
+    if (questionTestId > currentTest.questions.length - 1) {
       addTestResult({
-        id:testId,
-        name:currentTest.name,
-        lengthTest:currentTest.questions.length,
-      })
-      router.push('/testing/[testId]/finish')
-    }else{
-      setCurrentQuestion(currentTest.questions[questionTestId])
+        id: testId,
+        name: currentTest.name,
+        lengthTest: currentTest.questions.length,
+      });
+      router.push("/testing/[testId]/finish");
+    } else {
+      setCurrentQuestion(currentTest.questions[questionTestId]);
     }
-  },[questionTestId])
+  }, [questionTestId]);
 
   return (
-        <Questions 
-          numberQuestions={currentTest.questions.length}
-          questionTestId={questionTestId}
-          currentQuestion={currentQuestion}
-          setQuestionTestId={setQuestionTestId}/>
+    <Questions
+      numberQuestions={currentTest.questions.length}
+      questionTestId={questionTestId}
+      currentQuestion={currentQuestion}
+      setQuestionTestId={setQuestionTestId}
+    />
   );
 }

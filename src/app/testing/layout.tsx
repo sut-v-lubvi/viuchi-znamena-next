@@ -1,18 +1,14 @@
-"use client"
-import { Container, ContainerTests } from "./style"
-
+"use client";
+import { Container, ContainerTests } from "./style";
 
 export default function TestLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode;
 }) {
-    return(
-        <Container>
-        <ContainerTests>
-            {children}
-        </ContainerTests>
-        </Container>
-
-    )
+  return (
+    <Container>
+      <ContainerTests>{children}</ContainerTests>
+    </Container>
+  );
 }

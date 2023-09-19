@@ -1,5 +1,10 @@
-import styles from "./page.module.css";
+"use client";
+import { Container, ContainerTests } from "./style";
 
 export default function Home() {
-  return <h1>Home</h1>;
+  return (
+    <Container>
+      <ContainerTests></ContainerTests>
+    </Container>
+  );
 }
