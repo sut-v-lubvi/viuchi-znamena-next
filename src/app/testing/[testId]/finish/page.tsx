@@ -7,7 +7,7 @@ export default function FinishContainer() {
   const { id, name, correctAnswers, errors, lengthTest } = useAppSelector(
     (state) => state
   );
-  console.log("");
+
   return (
     <Finish
       lengthTest={lengthTest}
