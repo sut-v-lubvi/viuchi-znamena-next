@@ -108,20 +108,29 @@ label {
 legend {
   display: block;
 }
+body {
+  min-height: 100vh;
+}
 .container {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
-@font-face { 
-  font-family: "znamenna"; 
-  src: url("../../public/Kruk-Kalashn-edit-VG.ttf"); 
+@font-face {
+  font-family: "izhitsa";
+  src: url("../../public/izhitsa.otf");
 }
-.red{
+@font-face {
+  font-family: "znamenna";
+  src: url("../../public/Kruk-Kalashn-edit-VG.ttf");
+}
+
+.red {
   color: red;
 }
-span{
-  font-family: "znamenna"
+span {
+  font-family: "znamenna";
 }
-a{
+a {
   color: black;
 }
