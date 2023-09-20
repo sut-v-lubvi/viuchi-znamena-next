@@ -26,6 +26,12 @@
     "react-icons": "^4.11.0",
     "react-redux": "^8.1.2",
     "styled-components": "^6.0.7",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "use-sound": "^4.0.1"
+  },
+  "devDependencies": {
+    "@swc/plugin-styled-components": "^1.5.83",
+    "file-loader": "^6.2.0",
+    "url-loader": "^4.1.1"
   }
 }

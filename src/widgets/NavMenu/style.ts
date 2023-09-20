@@ -30,7 +30,7 @@ export const Container = styled.div`
   margin: 30px 15px 30px 15px;
   border: solid 2px rgb(48, 48, 48);
   width: 100vw;
-  height: 88vh;
+  max-height: 87vh;
   display: flex;
   justify-content: center;
 `;

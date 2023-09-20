@@ -44,5 +44,6 @@ export const BookLink = styled.a`
     font-size: 19px;
   }
   text-align: center;
+  padding: 10px;
   font-size: 20px;
 `;

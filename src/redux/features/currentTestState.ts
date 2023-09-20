@@ -1,3 +1,4 @@
+import { testScore } from "@/shared/utils/testScore";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
@@ -7,14 +8,16 @@ export interface CounterState {
   lengthTest: number;
   correctAnswers: number;
   errors: number;
+  evaluation: number;
 }
 
 const initialState: CounterState = {
   id: null,
-  name: "glhgkljglkjghjhg,k",
+  name: "",
   lengthTest: 0,
   correctAnswers: 0,
   errors: 0,
+  evaluation: 0,
 };
 
 export const testSlice = createSlice({
@@ -26,6 +29,7 @@ export const testSlice = createSlice({
         (state.name = payload.name),
         (state.lengthTest = payload.lengthTest),
         (state.errors = payload.lengthTest - state.correctAnswers);
+      state.evaluation = testScore(state.correctAnswers, state.lengthTest);
     },
     addCorrectAnswers: (state) => {
       state.correctAnswers += 1;
