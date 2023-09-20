@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Providers } from "@/redux/store/provider";
+import StyledComponentsRegistry from "../../lib/registry";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,8 +22,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <div className="container">
-            <Header />
-            {children}
+            <StyledComponentsRegistry>
+              <Header />
+              <div className="container_container">
+                <div className="container_layout">{children}</div>
+              </div>
+            </StyledComponentsRegistry>
           </div>
         </Providers>
       </body>

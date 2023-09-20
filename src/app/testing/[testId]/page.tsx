@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Container, ContainerTests } from "./style";
 import { getCurrentTest } from "@/shared/ui/BurgerButton/api/testsData/fakeApi/fakeAPI";
 import { type } from "os";
 import {
@@ -9,8 +8,8 @@ import {
 } from "@/shared/ui/BurgerButton/api/testsData/fakeApi/testsData";
 import Questions from "@/widgets/Questions";
 import { useActions } from "@/redux/hooks/useActions";
-import { useAppSelector } from "@/redux/hooks/hooks";
 import { useRouter } from "next/navigation";
+
 interface Props {
   params: {
     testId: string;
@@ -27,7 +26,6 @@ export default function Test({ params: { testId } }: Props) {
     currentTest.questions[questionTestId]
   );
   const { addTestResult } = useActions();
-
   useEffect(() => {
     if (questionTestId > currentTest.questions.length - 1) {
       addTestResult({

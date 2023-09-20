@@ -5,8 +5,9 @@ import { GrList } from "react-icons/gr";
 import { RiVipCrownLine } from "react-icons/ri";
 
 export const Title = styled.div`
-  font-size: 24px;
+  font-size: 28px;
   align-self: center;
+  font-family: "izhitsa";
 `;
 export const FinishBody = styled.div`
   display: flex;

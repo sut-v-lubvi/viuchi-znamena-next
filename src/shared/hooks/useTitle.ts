@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
 
-export const useTitle = (correctAnswers: number, lengthTest: number) => {
+export const useTitle = (evaluation: number) => {
   const [title, setTitle] = useState("");
   useEffect(() => {
-    console.log("useTitle " + correctAnswers);
-    debugger;
-    console.log(lengthTest / 1.5);
-    if (correctAnswers < lengthTest / 2) {
+    if (evaluation === 2) {
       setTitle("Попробуй ещё раз");
     }
-    if (correctAnswers > lengthTest / 2 && correctAnswers < lengthTest / 1.5) {
+    if (evaluation === 3) {
       setTitle("Не плохо");
     }
-    if (correctAnswers > lengthTest / 1.5) {
+    if (evaluation === 4) {
       setTitle("А ты хорош");
     }
-    if (correctAnswers === lengthTest) {
+    if (evaluation === 5) {
       setTitle("Аминь!");
     }
-  }, [correctAnswers]);
+  }, [evaluation]);
   return title;
 };

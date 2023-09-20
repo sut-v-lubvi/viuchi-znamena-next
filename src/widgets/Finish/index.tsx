@@ -1,35 +1,25 @@
 "use client";
 
-import {
-  FinishBody,
-  LinkContainer,
-  List,
-  Name,
-  NavLine,
-  Repeat,
-  Response,
-  TestName,
-  Title,
-  Top,
-} from "./style";
+import { FinishBody, Name, NavLine, Response, TestName, Title } from "./style";
 import { Kruk } from "../NavMenu/style";
 import { CounterState } from "@/redux/features/currentTestState";
 import { useActions } from "@/redux/hooks/useActions";
 import { useTitle } from "@/shared/hooks/useTitle";
-import { useEffect } from "react";
 import NavIcons from "@/features/nawIcons";
+import bass from "../../../public/bass.mp3";
+import { memo } from "react";
+import { useBass } from "@/shared/hooks/useBass";
 
-export default function Finish({
+export default memo(function Finish({
   id,
   name,
-  lengthTest,
   correctAnswers,
+  evaluation,
   errors,
 }: CounterState) {
   const { nullCorrectAnswers } = useActions();
-
-  const title = useTitle(correctAnswers, lengthTest);
-  console.log(title);
+  const title = useTitle(evaluation);
+  useBass(evaluation, bass);
   return (
     <>
       <Title>{title}</Title>
@@ -48,4 +38,4 @@ export default function Finish({
       </NavLine>
     </>
   );
-}
+});
