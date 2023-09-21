@@ -1,22 +1,21 @@
 "use client";
 import {
-  ButtonCont,
   ButtonNext,
   ContainerQ,
   DivImg,
   DivQuestions,
   DivTitle,
   Line,
+  None,
   Znamya,
 } from "./style";
-import {
-  QuestionType,
-  TestType,
-} from "@/shared/ui/BurgerButton/api/testsData/fakeApi/testsData";
-import { useState, useEffect } from "react";
+import { QuestionType } from "@/shared/ui/BurgerButton/api/testsData/fakeApi/testsData";
+import { useState } from "react";
 import { AnswerOption } from "@/features/answerOptions";
-import { useAppSelector } from "@/redux/hooks/hooks";
 import { useActions } from "@/redux/hooks/useActions";
+import { Counter } from "@/features/counter";
+import { useCounter } from "@/shared/hooks/useCounter";
+import { LineProgress } from "@/features/lineProgress";
 interface Props {
   currentQuestion: QuestionType;
   numberQuestions: number;
@@ -32,10 +31,12 @@ export default function Questions({
 }: Props) {
   const [answerId, setAnswerId] = useState<number | null>(null);
   const isAnswer = typeof answerId === "number";
-  const { addCorrectAnswers } = useActions();
-  const correct = useAppSelector((state) => state.correctAnswers);
+  const { addCorrectAnswers, addTestTime } = useActions();
+
+  let time: number = useCounter();
   return (
     <>
+      <Counter time={time} />
       <DivQuestions>
         <DivImg>
           <Znamya
@@ -61,19 +62,24 @@ export default function Questions({
           );
         })}
       </ContainerQ>
-      <ButtonCont>
-        {isAnswer && (
-          <ButtonNext
-            onClick={() => {
-              setQuestionTestId(questionTestId + 1);
-              setAnswerId(null);
-            }}
-            disabled={!isAnswer}
-          >
-            Далее
-          </ButtonNext>
-        )}
-      </ButtonCont>
+      {isAnswer ? (
+        <ButtonNext
+          onClick={() => {
+            addTestTime(time);
+            setQuestionTestId(questionTestId + 1);
+            setAnswerId(null);
+          }}
+          disabled={!isAnswer}
+        >
+          Далее
+        </ButtonNext>
+      ) : (
+        <None />
+      )}
+      <LineProgress
+        questionTestId={questionTestId}
+        numberQuestions={numberQuestions}
+      />
     </>
   );
 }

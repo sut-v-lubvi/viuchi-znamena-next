@@ -15,6 +15,16 @@ export const FinishBody = styled.div`
   flex-direction: column;
   gap: 20px;
 `;
+export const TestTime = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  padding-left: 20px;
+`;
+export const Text = styled.div`
+  font-size: 20px;
+  color: rgb(48, 48, 48);
+`;
 export const Name = styled.div`
   margin: 0px 10px 20px 10px;
   font-size: 20px;

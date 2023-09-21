@@ -2,22 +2,24 @@ import { testScore } from "@/shared/utils/testScore";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export interface CounterState {
+export interface currentTestState {
   id?: number | null;
   name: string | null;
   lengthTest: number;
   correctAnswers: number;
   errors: number;
   evaluation: number;
+  time: number;
 }
 
-const initialState: CounterState = {
+const initialState: currentTestState = {
   id: null,
   name: "",
   lengthTest: 0,
   correctAnswers: 0,
   errors: 0,
   evaluation: 0,
+  time: 0,
 };
 
 export const testSlice = createSlice({
@@ -38,10 +40,11 @@ export const testSlice = createSlice({
       state.correctAnswers = 0;
       state.errors = 0;
     },
+    addTestTime: (state, { payload }) => {
+      state.time = payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const actions = testSlice.actions;
-
-export default testSlice.reducer;
+export const actionsTest = testSlice.actions;
