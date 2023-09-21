@@ -1,14 +1,14 @@
 "use client";
 import { useAppSelector } from "@/redux/hooks/hooks";
-import { useTitle } from "@/shared/hooks/useTitle";
 import Finish from "@/widgets/Finish";
 
 export default function FinishContainer() {
-  const { id, name, correctAnswers, errors, lengthTest, evaluation } =
-    useAppSelector((state) => state);
+  const { id, name, correctAnswers, errors, lengthTest, evaluation, time } =
+    useAppSelector((state) => state.testSlice);
 
   return (
     <Finish
+      time={time}
       evaluation={evaluation}
       lengthTest={lengthTest}
       name={name}

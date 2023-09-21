@@ -1,4 +1,4 @@
-import { styled, css } from "styled-components";
+import { styled } from "styled-components";
 
 export const Znamya = styled.div`
   text-align: center;
@@ -15,12 +15,10 @@ export const DivImg = styled.div`
   width: 300px;
   height: 200px;
   align-self: center;
-  /* background: url("../../../../public/kruk.jpg") no-repeat center; */
 `;
 export const DivQuestions = styled.div`
   display: flex;
   flex-direction: column;
-
 `;
 export const DivTitle = styled.div`
   margin: 0px auto;
@@ -32,10 +30,9 @@ export const ContainerQ = styled.div`
   padding-bottom: 30px;
   display: flex;
   flex-direction: column;
-  height: 40%;
+  height: auto;
   justify-content: center;
   gap: 20px;
-
 `;
 
 export const InputT = styled.input`
@@ -51,7 +48,11 @@ export const Line = styled.div`
   height: 2px;
   background-color: rgb(128, 128, 128);
 `;
-
+export const None = styled.div`
+  width: 90%;
+  height: 40px;
+  align-self: center;
+`;
 export const ButtonNext = styled.button`
   &:active {
     transform: translateY(1.5px);
@@ -66,7 +67,7 @@ export const ButtonNext = styled.button`
   height: 40px;
   font-size: 15px;
   border-radius: 10px;
-
+  align-self: center;
 `;
 export const ButtonCont = styled.div`
   height: 50px;

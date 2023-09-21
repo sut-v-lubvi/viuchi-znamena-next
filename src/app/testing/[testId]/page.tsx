@@ -25,7 +25,7 @@ export default function Test({ params: { testId } }: Props) {
   const [currentQuestion, setCurrentQuestion] = useState<QuestionType>(
     currentTest.questions[questionTestId]
   );
-  const { addTestResult } = useActions();
+  const { addTestResult, addTestTime } = useActions();
   useEffect(() => {
     if (questionTestId > currentTest.questions.length - 1) {
       addTestResult({

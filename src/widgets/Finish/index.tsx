@@ -1,14 +1,24 @@
 "use client";
 
-import { FinishBody, Name, NavLine, Response, TestName, Title } from "./style";
+import {
+  FinishBody,
+  Name,
+  NavLine,
+  Response,
+  TestName,
+  TestTime,
+  Text,
+  Title,
+} from "./style";
 import { Kruk } from "../NavMenu/style";
-import { CounterState } from "@/redux/features/currentTestState";
 import { useActions } from "@/redux/hooks/useActions";
 import { useTitle } from "@/shared/hooks/useTitle";
 import NavIcons from "@/features/nawIcons";
 import bass from "../../../public/bass.mp3";
 import { memo } from "react";
 import { useBass } from "@/shared/hooks/useBass";
+import { currentTestState } from "@/redux/features/currentTestState";
+import { Time } from "@/features/counter/timer";
 
 export default memo(function Finish({
   id,
@@ -16,10 +26,12 @@ export default memo(function Finish({
   correctAnswers,
   evaluation,
   errors,
-}: CounterState) {
+  time,
+}: currentTestState) {
   const { nullCorrectAnswers } = useActions();
   const title = useTitle(evaluation);
   useBass(evaluation, bass);
+  console.log(time);
   return (
     <>
       <Title>{title}</Title>
@@ -30,6 +42,10 @@ export default memo(function Finish({
           ></Kruk>
           <TestName>{name}</TestName>
         </Name>
+        <TestTime>
+          <Text>Время:</Text>
+          <Time time={time} />
+        </TestTime>
         <Response $fg={true}>Правильных ответов: {correctAnswers} </Response>
         <Response $fg={false}>Ошибок: {errors}</Response>
       </FinishBody>

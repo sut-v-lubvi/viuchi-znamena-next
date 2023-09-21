@@ -1,16 +1,15 @@
-import {styled, css} from "styled-components";
+import { styled, css } from "styled-components";
 
 export const ButtonNew = styled.button<{ flag: string }>`
-  /* padding: 12px; */
   align-self: center;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
   background-color: white;
   border: 2px solid rgb(48, 48, 48);
   border-radius: 10px;
   width: 90%;
-  height: 40px;
+  min-height: 40px;
   font-size: 16px;
-  padding-left: 10px;
+  padding: 5px;
   text-align: start;
 
   ${(props: any) =>
