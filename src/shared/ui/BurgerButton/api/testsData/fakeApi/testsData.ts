@@ -5,7 +5,8 @@ export const dataTests: DataTestType = {
       id: 0,
       name: "Как называется это знамя",
       icon: '<span class="red">â</span>[5<span class="red"> ü</span>',
-      description:'Пройди тест и узнай как хорошо ты знаешь названия зннамён. Выбери один правильный ответ из четырёх.',
+      description:
+        "Пройди тест и узнай как хорошо ты знаешь названия зннамён. Выбери один правильный ответ из четырёх.",
       questions: [
         {
           id: 1,
@@ -263,7 +264,8 @@ export const dataTests: DataTestType = {
       id: 1,
       icon: "<span class='red'>ãê</span>88J2",
       name: "Как поётся это знамя ",
-      description:'Знать названия знамён, это конечно хорошо, а знаешь ли ты  как они поются? Проверь себя, пройди тест, выбери один правильный ответ из четырёх.',
+      description:
+        "Знать названия знамён, это конечно хорошо, а знаешь ли ты  как они поются? Проверь себя, пройди тест, выбери один правильный ответ из четырёх.",
       questions: [
         {
           id: 1,
@@ -455,19 +457,19 @@ export type QuestionType = {
   image: string;
   znamya: string;
   question: string;
-  correctAnswersIds: Array<number>;
-  answers: Array<AnswerType>;
+  correctAnswersIds: number[];
+  answers: AnswerType[] | [];
 };
 
 export type DataTestType = {
   name: string;
-  tests: Array<TestType>;
+  tests: TestType[];
 };
 
 export type TestType = {
-  id: number;
-  name: string;
-  icon: string;
-  questions: Array<QuestionType>;
-  description:string
+  id: number | null;
+  name: string | "";
+  icon: string | "";
+  questions: QuestionType[];
+  description: string | "";
 };
