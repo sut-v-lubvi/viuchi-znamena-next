@@ -20,12 +20,14 @@ interface Props {
   setStateMenu: (stateMenu: boolean) => any;
 }
 type LinksType = {
+  id: number;
   href: string;
   icon: ReactNode;
   text: string;
 };
 const dataLinks: LinksType[] = [
   {
+    id: 1,
     href: "/testing",
     icon: (
       <Kruk
@@ -37,26 +39,31 @@ const dataLinks: LinksType[] = [
     text: "Выучи знамёна",
   },
   {
+    id: 2,
     href: "/profile",
     icon: <Prof />,
     text: " Мой профиль",
   },
   {
+    id: 3,
     href: "/rating",
     icon: <KingIc />,
     text: "Рейтинг",
   },
   {
+    id: 4,
     href: "/documentation",
     icon: <Doc />,
     text: "Доукументация",
   },
   {
+    id: 5,
     href: "/help",
     icon: <Help />,
     text: "Поддержка",
   },
   {
+    id: 6,
     href: "/addTest",
     icon: <Settings />,
     text: "Настройки",
@@ -70,6 +77,7 @@ export default function NavMenu({ stateMenu, setStateMenu }: Props) {
           {dataLinks.map((e) => {
             return (
               <Links
+                key={e.id}
                 onClick={() => {
                   setStateMenu(!stateMenu);
                 }}
