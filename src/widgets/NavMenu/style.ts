@@ -4,6 +4,7 @@ import { RiVipCrownLine } from "react-icons/ri";
 import { BsJournalBookmarkFill } from "react-icons/bs";
 import { BiHelpCircle } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
+import { LuSettings } from "react-icons/lu";
 
 export const Links = styled(Link)`
   &:hover {
@@ -92,5 +93,8 @@ export const Help = styled(BiHelpCircle)`
   ${NavIcon}
 `;
 export const Prof = styled(CgProfile)`
+  ${NavIcon}
+`;
+export const Settings = styled(LuSettings)`
   ${NavIcon}
 `;
