@@ -1,4 +1,5 @@
 "use client";
+import { type } from "os";
 import {
   Container,
   Doc,
@@ -10,66 +11,83 @@ import {
   Links,
   Menu,
   Prof,
+  Settings,
 } from "./style";
+import { ReactNode } from "react";
 
 interface Props {
   stateMenu: boolean;
   setStateMenu: (stateMenu: boolean) => any;
 }
+type LinksType = {
+  id: number;
+  href: string;
+  icon: ReactNode;
+  text: string;
+};
+const dataLinks: LinksType[] = [
+  {
+    id: 1,
+    href: "/testing",
+    icon: (
+      <Kruk
+        dangerouslySetInnerHTML={{
+          __html: '<span class="red">â</span>[5',
+        }}
+      ></Kruk>
+    ),
+    text: "Выучи знамёна",
+  },
+  {
+    id: 2,
+    href: "/profile",
+    icon: <Prof />,
+    text: " Мой профиль",
+  },
+  {
+    id: 3,
+    href: "/rating",
+    icon: <KingIc />,
+    text: "Рейтинг",
+  },
+  {
+    id: 4,
+    href: "/documentation",
+    icon: <Doc />,
+    text: "Доукументация",
+  },
+  {
+    id: 5,
+    href: "/help",
+    icon: <Help />,
+    text: "Поддержка",
+  },
+  {
+    id: 6,
+    href: "/addTest",
+    icon: <Settings />,
+    text: "Настройки",
+  },
+];
 export default function NavMenu({ stateMenu, setStateMenu }: Props) {
   return (
     <Menu $stateMenu={stateMenu}>
       <Container>
         <FlexContainer>
-          <Links
-            onClick={() => {
-              setStateMenu(!stateMenu);
-            }}
-            href="/testing"
-          >
-            <Kruk
-              dangerouslySetInnerHTML={{
-                __html: '<span class="red">â</span>[5',
-              }}
-            ></Kruk>
-            Выучи знамёна
-          </Links>
-          <Links
-            onClick={() => {
-              setStateMenu(!stateMenu);
-            }}
-            href="/profile"
-          >
-            <Prof />
-            Мой профиль
-          </Links>
-          <Links
-            onClick={() => {
-              setStateMenu(!stateMenu);
-            }}
-            href="/rating"
-          >
-            <KingIc />
-            Рейтинг
-          </Links>
-          <Links
-            onClick={() => {
-              setStateMenu(!stateMenu);
-            }}
-            href="/documentation"
-          >
-            <Doc />
-            Документация
-          </Links>
-          <Links
-            onClick={() => {
-              setStateMenu(!stateMenu);
-            }}
-            href="/help"
-          >
-            <Help />
-            Помощь
-          </Links>
+          {dataLinks.map((e) => {
+            return (
+              <Links
+                key={e.id}
+                onClick={() => {
+                  setStateMenu(!stateMenu);
+                }}
+                href={e.href}
+              >
+                {e.icon}
+                {e.text}
+              </Links>
+            );
+          })}
         </FlexContainer>
       </Container>
     </Menu>
